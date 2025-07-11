@@ -81,7 +81,7 @@ function App() {
               Nagendra Reddy
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-slide-up">
-              Full-Stack Developer & Data Science Enthusiast
+              Software Developer & Data Science Enthusiast
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
               <a href="#contact" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105">
