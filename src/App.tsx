@@ -115,9 +115,12 @@ function App() {
           <h2 className="text-4xl font-bold text-center text-white mb-12">About Me</h2>
           <div className="max-w-3xl mx-auto text-gray-300 space-y-6">
             <p className="text-lg leading-relaxed">
-              Final-year Computer Science student with strong skills in Java, Data Structures, Algorithms, and
-Ful           Web Development. Experienced in building end-to-end applications using ML and modern
-web           technologies. Passionate about problem-solving and software engineering.
+              I am a final-year Computer Science student with a solid foundation in core programming concepts.
+              Proficient in Java, Data Structures, and Algorithms, I have consistently applied these skills to solve complex problems.
+              My expertise extends to Full Stack Development, where I build dynamic and responsive web applications.
+              I have hands-on experience developing end-to-end projects that integrate Machine Learning models with modern web technologies.
+              With a strong focus on clean code and scalable architecture, I aim to build impactful software solutions.
+              Driven by a deep passion for problem-solving and innovation, I am committed to continuous learning and growth in software engineering.
             </p>
           </div>
         </div>
