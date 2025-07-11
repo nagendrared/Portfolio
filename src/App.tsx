@@ -115,10 +115,9 @@ function App() {
           <h2 className="text-4xl font-bold text-center text-white mb-12">About Me</h2>
           <div className="max-w-3xl mx-auto text-gray-300 space-y-6">
             <p className="text-lg leading-relaxed">
-              I'm a Computer Science and Engineering (Data Science) student aspiring to become a Full-Stack Developer. 
-              Passionate about both frontend and backend development, I focus on building efficient and scalable applications. 
-              Proficient in solving Data Structures and Algorithms (DSA) problems, I strive to write optimized code. 
-              Always eager to learn and take on new challenges!
+              Final-year Computer Science student with strong skills in Java, Data Structures, Algorithms, and
+Ful           Web Development. Experienced in building end-to-end applications using ML and modern
+web           technologies. Passionate about problem-solving and software engineering.
             </p>
           </div>
         </div>
