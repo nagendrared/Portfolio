@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Mail, MapPin, ExternalLink, Award, BookOpen, Code, Database, Menu, X, Linkedin, Twitter, Download, ChevronUp } from 'lucide-react';
+import { Github, Mail, MapPin, ExternalLink, Award, BookOpen, Code, Database, Menu, X, Linkedin, Twitter, Download, ChevronUp, Palette, Coffee, Brain, Cpu, Globe, Server} from 'lucide-react';
 import Profile from './profile.jpg'
 import Resume from './Resume.pdf';
 
@@ -9,6 +9,10 @@ const profileImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+function MyComponent() {
+  return <Server size={32} color="blue" />;
+}
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +26,18 @@ function App() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+   const skills = [
+    { name: 'C', icon: Code },
+    { name: 'Java', icon: Coffee },
+    { name: 'Python', icon: Code },
+    { name: 'HTML', icon: Globe },
+    { name: 'CSS', icon: Palette },
+    { name: 'JavaScript', icon: Code },
+    { name: 'React Js', icon: Code },
+    { name: 'SQL', icon: Database },
+    { name: 'Machine Learning', icon: Brain },
+    { name: 'Flask', icon: Server}
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
@@ -115,12 +131,10 @@ function App() {
           <h2 className="text-4xl font-bold text-center text-white mb-12">About Me</h2>
           <div className="max-w-3xl mx-auto text-gray-300 space-y-6">
             <p className="text-lg leading-relaxed">
-              I am a final-year Computer Science student with a solid foundation in core programming concepts.
-              Proficient in Java, Data Structures, and Algorithms, I have consistently applied these skills to solve complex problems.
-              My expertise extends to Full Stack Development, where I build dynamic and responsive web applications.
-              I have hands-on experience developing end-to-end projects that integrate Machine Learning models with modern web technologies.
-              With a strong focus on clean code and scalable architecture, I aim to build impactful software solutions.
-              Driven by a deep passion for problem-solving and innovation, I am committed to continuous learning and growth in software engineering.
+              I'm a Computer Science and Engineering (Data Science) student aspiring to become a Full-Stack Developer. 
+              Passionate about both frontend and backend development, I focus on building efficient and scalable applications. 
+              Proficient in solving Data Structures and Algorithms (DSA) problems, I strive to write optimized code. 
+              Always eager to learn and take on new challenges!
             </p>
           </div>
         </div>
@@ -291,17 +305,23 @@ function App() {
           <h2 className="text-4xl font-bold text-center text-white mb-12">Skills</h2>
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {['HTML', 'CSS', 'JavaScript', 'React Js', 'C', 'Java', 'Python', 'SQL', 'Machine Learning'].map((skill) => (
-                <div key={skill} className="bg-white/10 rounded-lg p-4 text-center backdrop-blur-sm hover:transform hover:scale-105 transition-all group">
-                  <span className="text-purple-300 font-semibold group-hover:text-purple-400 transition-colors">{skill}</span>
-                </div>
-              ))}
+              {skills.map((skill) => {
+                const IconComponent = skill.icon;
+                return (
+                  <div key={skill.name} className="bg-white/10 rounded-lg p-6 text-center backdrop-blur-sm hover:transform hover:scale-105 transition-all group">
+                    <div className="flex flex-col items-center gap-3">
+                      <IconComponent className="text-purple-400 group-hover:text-purple-300 transition-colors" size={32} />
+                      <span className="text-purple-300 font-semibold group-hover:text-purple-400 transition-colors">{skill.name}</span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white/5 p-6 rounded-lg backdrop-blur-sm">
                 <h3 className="text-xl font-semibold text-purple-300 mb-4">Development</h3>
                 <ul className="space-y-2 text-gray-300">
-                  <li>• Full-Stack Development</li>
+                  <li>• Web Development</li>
                   <li>• Responsive Design</li>
                   <li>• API Integration</li>
                   <li>• Database Management</li>
@@ -313,7 +333,7 @@ function App() {
                   <li>• Git & GitHub</li>
                   <li>• VS Code</li>
                   <li>• Postman</li>
-                  <li>• Docker</li>
+                  <li>• Jupyter Notebook</li>
                 </ul>
               </div>
               <div className="bg-white/5 p-6 rounded-lg backdrop-blur-sm">
