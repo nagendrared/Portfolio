@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Mail, MapPin, ExternalLink, Award, BookOpen, Code, Database, Menu, X, Linkedin, Twitter, Download, ChevronUp, Palette, Coffee, Brain, Cpu, Globe, Server} from 'lucide-react';
 import Profile from './profile.jpg'
-import Resume from './Resume.pdf';
+import Resume from './Nagendra_Resume.pdf';
 
 // Replace profile image with a placeholder from Unsplash
 const profileImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80";
