@@ -9,6 +9,7 @@ const profileImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [activeFilter, setActiveFilter] = useState('all');
 
 function MyComponent() {
   return <Server size={32} color="blue" />;
@@ -38,6 +39,83 @@ function MyComponent() {
     { name: 'Machine Learning', icon: Brain },
     { name: 'Flask', icon: Server}
   ];
+
+  const projects = [
+    // Web Development Projects
+    {
+      id: 1,
+      category: 'web-development',
+      title: 'Weather Dashboard',
+      description: 'A web application designed to provide users with accurate and real-time weather information for their chosen locations.',
+      image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80',
+      technologies: ['HTML', 'CSS', 'JavaScript', 'API'],
+      github: 'https://github.com/nagendrared/weather_dashboard',
+      demo: 'https://nagendrared.github.io/weather_dashboard/'
+    },
+    {
+      id: 2,
+      category: 'web-development',
+      title: 'ShopHub',
+      description: 'A modern e-commerce platform built with React, featuring a responsive design, product catalog, shopping cart, and secure checkout process.',
+      image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80',
+      technologies: ['React', 'Tailwind CSS'],
+      github: 'https://github.com/nagendrared/shophub',
+      demo: 'https://shophub-amber.vercel.app/'
+    },
+    // Machine Learning Projects
+    {
+      id: 3,
+      category: 'machine-learning',
+      title: 'Loan Eligibility Prediction',
+      description: 'A machine learning-based web application that predicts loan eligibility using financial and demographic data. Features a user-friendly interface, real-time API integration, and optimized performance.',
+      image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80',
+      technologies: ['Python', 'Machine Learning', 'Flask', 'React'],
+      github: 'https://github.com/nagendrared/loan-eligibility-predictor',
+      demo: 'https://loan-eligibility-predictor-five.vercel.app/'
+    },
+    {
+      id: 4,
+      category: 'machine-learning',
+      title: 'Object Detection System',
+      description: 'A real-time object detection system using deep learning, capable of identifying and tracking multiple objects in images and video streams.',
+      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80',
+      technologies: ['Python', 'Deep Learning', 'Flask', 'React'],
+      github: 'https://github.com/nagendrared/object-detection',
+      demo: null
+    },
+    // NLP Projects
+    {
+      id: 5,
+      category: 'nlp',
+      title: 'Emotion Detection System',
+      description: 'An advanced natural language processing system that analyzes text to detect and classify human emotions using machine learning techniques.',
+      image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80',
+      technologies: ['Python', 'NLP', 'Machine Learning', 'Flask'],
+      github: 'https://github.com/nagendrared/EMOTION-DETECTION-SYSTEM',
+      demo: '#'
+    },
+    {
+      id: 6,
+      category: 'nlp',
+      title: 'Next Word Prediction',
+      description: 'A sophisticated NLP model that predicts the next word in a sequence using deep learning techniques and natural language understanding.',
+      image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80',
+      technologies: ['Python', 'Deep Learning', 'NLP', 'TensorFlow'],
+      github: 'https://github.com/nagendrared/Next_Word_Prediction',
+      demo: '#'
+    }
+  ];
+
+  const filterButtons = [
+    { id: 'all', label: 'All Projects', count: projects.length },
+    { id: 'web-development', label: 'Web Development', count: projects.filter(p => p.category === 'web-development').length },
+    { id: 'machine-learning', label: 'Machine Learning', count: projects.filter(p => p.category === 'machine-learning').length },
+    { id: 'nlp', label: 'Natural Language Processing', count: projects.filter(p => p.category === 'nlp').length }
+  ];
+
+  const filteredProjects = activeFilter === 'all' 
+    ? projects 
+    : projects.filter(project => project.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
@@ -167,134 +245,77 @@ function MyComponent() {
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-black/30 backdrop-blur-sm">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-white mb-12">Projects</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Loan Prediction Project */}
-            <div className="bg-gradient-to-br from-purple-900/50 to-pink-900/50 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all group">
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80" 
-                  alt="Loan Prediction" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-white mb-4">Loan Eligibility Prediction</h3>
-                <p className="text-gray-300 mb-4">
-                  A machine learning-based web application that predicts loan eligibility using financial and demographic data. 
-                  Features a user-friendly interface, real-time API integration, and optimized performance.
-                </p>
-                <div className="flex flex-wrap gap-3 mb-4">
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">Python</span>
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">Machine Learning</span>
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">Flask</span>
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">React</span>
-                </div>
-                <div className="flex gap-4 text-sm">
-                  <a href="https://github.com/nagendrared/loan-eligibility-predictor" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300">
-                    <Github size={16} /> GitHub
-                  </a>
-                  <a href="https://loan-eligibility-predictor-five.vercel.app/" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300">
-                    <ExternalLink size={16} /> Live Demo
-                  </a>
-                </div>
-              </div>
-            </div>
+          <h2 className="text-4xl font-bold text-center text-white mb-12">My Projects</h2>
+  
+          
+          {/* Filter Buttons */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {filterButtons.map((button) => (
+              <button
+                key={button.id}
+                onClick={() => setActiveFilter(button.id)}
+                className={`px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 ${
+                  activeFilter === button.id
+                    ? 'bg-purple-600 text-white shadow-lg'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
+                }`}
+              >
+                {button.label}
+              </button>
+            ))}
+          </div>
 
-            {/* Weather Dashboard Project */}
-            <div className="bg-gradient-to-br from-purple-900/50 to-pink-900/50 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all group">
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80" 
-                  alt="Weather Dashboard" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-white mb-4">Weather Dashboard</h3>
-                <p className="text-gray-300 mb-4">
-                  A web application designed to provide users with accurate and real-time weather information 
-                  for their chosen locations.
-                </p>
-                <div className="flex flex-wrap gap-3 mb-4">
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">HTML</span>
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">CSS</span>
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">JavaScript</span>
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">API</span>
+          {/* Projects Grid */}
+          <div className={`grid gap-8 max-w-6xl mx-auto ${
+            filteredProjects.length === 1 
+              ? 'grid-cols-1 justify-items-center max-w-md' 
+              : filteredProjects.length === 2 
+              ? 'grid-cols-1 md:grid-cols-2 justify-items-center max-w-4xl' 
+              : 'md:grid-cols-2 lg:grid-cols-3'
+          }`}>
+            {filteredProjects.map((project) => (
+              <div key={project.id} className="bg-gradient-to-br from-purple-900/50 to-pink-900/50 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all group">
+                <div className="relative">
+                  <img 
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
-                <div className="flex gap-4 text-sm">
-                  <a href="https://github.com/nagendrared/weather_dashboard" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300">
-                    <Github size={16} /> GitHub
-                  </a>
-                  <a href="https://nagendrared.github.io/weather_dashboard/" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300">
-                    <ExternalLink size={16} /> Live Demo
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* ShopHub Project */}
-            <div className="bg-gradient-to-br from-purple-900/50 to-pink-900/50 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all group">
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80" 
-                  alt="ShopHub" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-white mb-4">ShopHub</h3>
-                <p className="text-gray-300 mb-4">
-                  A modern e-commerce platform built with React, featuring a responsive design, 
-                  product catalog, shopping cart, and secure checkout process.
-                </p>
-                <div className="flex flex-wrap gap-3 mb-4">
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">React</span>
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">Tailwind CSS</span>
-                </div>
-                <div className="flex gap-4 text-sm">
-                  <a href="https://github.com/nagendrared/shophub" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300">
-                    <Github size={16} /> GitHub
-                  </a>
-                  <a href="https://shophub-amber.vercel.app/" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300">
-                    <ExternalLink size={16} /> Live Demo
-                  </a>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
+                  <p className="text-gray-300 mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                      <span key={tech} className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-4 text-sm">
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300"
+                    >
+                      <Github size={16} /> GitHub
+                    </a>
+                    {project.demo && (
+                      <a 
+                        href={project.demo} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300"
+                      >
+                        <ExternalLink size={16} /> Live Demo
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Object Detection Project */}
-            <div className="bg-gradient-to-br from-purple-900/50 to-pink-900/50 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all group">
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80" 
-                  alt="Object Detection" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-white mb-4">Object Detection System</h3>
-                <p className="text-gray-300 mb-4">
-                  A real-time object detection system using deep learning, capable of identifying and 
-                  tracking multiple objects in images and video streams.
-                </p>
-                <div className="flex flex-wrap gap-3 mb-4">
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">Python</span>
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">Deep Learning</span>
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">Flask</span>
-                  <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm text-purple-300">React</span>
-                </div>
-                <div className="flex gap-4 text-sm">
-                  <a href="https://github.com/nagendrared/object-detection" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300">
-                    <Github size={16} /> GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
